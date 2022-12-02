@@ -17,14 +17,27 @@ fs.readFile("file.txt", (err, data) => {
     calories.push(sum);
 
     const max = (e) => {
-        m = e[0];
+        m1 = 0;
+        m2 = 0;
+        m3 = 0; 
         for(let i = 0; i < e.length; ++i){
-            if(e[i] > m){
-                m = e[i];
+            if(e[i] > m1){
+                m3 = m2;
+                m2 = m1;
+                m1 = e[i];
+                continue;
+            }
+            if(e[i] > m2){
+                m3 = m2;
+                m2 = e[i];
+                continue;
+            }
+            if(e[i] > m3){
+                m3 = e[i];
             }
         }
-        return e.indexOf(m);
+
+        return m1 + m2 + m3;
     }
-    const maxIndex = max(calories);
-    console.log("Maximum is placed in array on index: " + maxIndex + " with value: " + calories[maxIndex])
+    console.log("Three Elves carrying together: " + max(calories) + " calories!")
   });
