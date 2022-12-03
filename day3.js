@@ -12,14 +12,15 @@ fs.readFile("file.txt", (err, data) => {
         for(let j = 0; j < numbers[i].length; j++){
             if(!rucksackSecondItem.includes(numbers[i][j])) continue;
             if(!rucksackThirdItem.includes(numbers[i][j])) continue;
-            if(numbers[i].charCodeAt(j) >= 65 && numbers[i].charCodeAt(j) <= 90){
-                console.log("guessed letter: " + numbers[i][j] + " charcode: " + numbers[i].charCodeAt(j))
-                sum += numbers[i].charCodeAt(j) - 38;
+            const charcode = numbers[i].charCodeAt(j);
+            if(charcode >= 65 && charcode <= 90){
+                console.log("guessed letter: " + numbers[i][j] + " charcode: " + charcode)
+                sum += charcode - 38;
                 break;
             }
-            if(numbers[i].charCodeAt(j) >= 97 && numbers[i].charCodeAt(j) <= 122){
-                console.log("guessed letter: " + numbers[i][j] + " charcode: " + numbers[i].charCodeAt(j))
-                sum += numbers[i].charCodeAt(j) - 96;
+            if(charcode >= 97 && charcode <= 122){
+                console.log("guessed letter: " + numbers[i][j] + " charcode: " + charcode)
+                sum += charcode - 96;
                 break;
             }
         }
