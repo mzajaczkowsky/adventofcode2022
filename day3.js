@@ -5,22 +5,27 @@ fs.readFile("file.txt", (err, data) => {
     if (err) throw err;
     const numbers = data.toString().split('\r\n');
     let sum = 0;
-    numbers.forEach(e => {
-        rucksackRight = e.slice(e.length/2)
-        for(let i = 0; i < e.length/2; i++){
-            if(!rucksackRight.includes(e[i])) continue;
-            if(e.charCodeAt(i) >= 65 && e.charCodeAt(i) <= 90){
-                console.log("guessed letter: " + e[i] + " charcode: " + e.charCodeAt(i))
-                sum += e.charCodeAt(i) - 38;
+    
+    for(let i = 0; i < numbers.length; i += 3){
+        rucksackSecondItem = numbers[i+1].slice();
+        rucksackThirdItem = numbers[i+2].slice();
+        for(let j = 0; j < numbers[i].length; j++){
+            if(!rucksackSecondItem.includes(numbers[i][j])) continue;
+            if(!rucksackThirdItem.includes(numbers[i][j])) continue;
+            if(numbers[i].charCodeAt(j) >= 65 && numbers[i].charCodeAt(j) <= 90){
+                console.log("guessed letter: " + numbers[i][j] + " charcode: " + numbers[i].charCodeAt(j))
+                sum += numbers[i].charCodeAt(j) - 38;
                 break;
             }
-            if(e.charCodeAt(i) >= 97 && e.charCodeAt(i) <= 122){
-                console.log("guessed letter: " + e[i] + " charcode: " + e.charCodeAt(i))
-                sum += e.charCodeAt(i) - 96;
+            if(numbers[i].charCodeAt(j) >= 97 && numbers[i].charCodeAt(j) <= 122){
+                console.log("guessed letter: " + numbers[i][j] + " charcode: " + numbers[i].charCodeAt(j))
+                sum += numbers[i].charCodeAt(j) - 96;
                 break;
-            }            
+            }
         }
-    })
+
+        console.log("Sum = " + sum)
+    }
     console.log("#############################")
     console.log("Answer = " + sum)
     console.log("#############################")
