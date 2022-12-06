@@ -28,5 +28,6 @@ fs.readFile("file.txt", (err, data) => {
     arr.forEach(e => {
         result += e.at(-1);
     })
+
     console.log('Result: ' + result)
 });
