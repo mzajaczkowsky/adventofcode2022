@@ -5,7 +5,6 @@ fs.readFile("file.txt", (err, data) => {
     if (err) throw err;
     const moves = data.toString().split('\r\n');
     let result = '';
-
     const arr = [
         ['Q', 'F', 'M', 'R', 'L', 'W', 'C', 'V'],
         ['D', 'Q', 'L'],
@@ -17,7 +16,6 @@ fs.readFile("file.txt", (err, data) => {
         ['C', 'P', 'D', 'M', 'S'],
         ['Z', 'N', 'W', 'T', 'V', 'M', 'P', 'C']
     ];
-
     moves.forEach(e => {
         splittedArr = e.split(' ');
         count = splittedArr[1];
@@ -31,5 +29,4 @@ fs.readFile("file.txt", (err, data) => {
         result += e.at(-1);
     })
     console.log('Result: ' + result)
-
 });
