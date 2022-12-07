@@ -1,4 +1,4 @@
-// December 5th, 2022
+// December 6th, 2022
 const fs = require("fs");
 
 fs.readFile("file.txt", (err, data) => {
